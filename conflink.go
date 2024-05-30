@@ -180,6 +180,10 @@ func main() {
 			wc.ServerPubKey = value
 		case "Endpoint":
 			endpoint := strings.Split(value, ":")
+			if len(endpoint) != 2 {
+				fmt.Println("Invalid endpoint format. Expected 'host:port'.")
+				return
+			}
 			host := endpoint[0]
 			port, err := strconv.Atoi(endpoint[1])
 			if err != nil {
